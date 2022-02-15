@@ -1,8 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-
 from .models import Post
+from .forms import PostModelForm
+
+# 글 등록
+def post_new(request):
+    post_form = PostModelForm()
+    return render(request, 'blog/post_edit.html', {'postform': post_form})
+
 
 # 글상세정보
 def post_detail(request,pk):
